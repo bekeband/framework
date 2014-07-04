@@ -37,9 +37,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#include "system.h"
-
 #include <stdint.h>
+#include "system.h"
 #include "gfx/gfx.h"
 #include "driver/touch_screen/drv_touch_screen.h"
 #include "driver/touch_screen/drv_touch_resistive_adc.h"
@@ -52,8 +51,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     #define CALIBRATIONINSET   20       // range 0 <= CALIBRATIONINSET <= 40 
 #endif
 
-#define CAL_X_INSET    (((GFX_MaxXGet()+1)*(CALIBRATIONINSET>>1))/100)
-#define CAL_Y_INSET    (((GFX_MaxYGet()+1)*(CALIBRATIONINSET>>1))/100)
+#define CAL_X_INSET    ((( GFX_MaxXGet() + 1)*(CALIBRATIONINSET>>1))/100)
+#define CAL_Y_INSET    ((( GFX_MaxYGet() + 1)*(CALIBRATIONINSET>>1))/100)
+/*#define CAL_X_INSET    ((( GFX_MAXX + 1)*(CALIBRATIONINSET>>1))/100)
+#define CAL_Y_INSET    ((( GFX_MAXY + 1)*(CALIBRATIONINSET>>1))/100)*/
 #define SAMPLE_POINTS   4
 
 //////////////////////// Resistive Touch Driver Version ////////////////////////////

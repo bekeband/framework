@@ -59,7 +59,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #if defined (GFX_USE_DISPLAY_CONTROLLER_ILI9341)
 
-#include <libpic30.h>                        
+#if defined (__XC16__)
+  #include <libpic30.h>
+#endif
+                       
 #include "driver/gfx/drv_gfx_display.h"      
 #include "driver/gfx/drv_gfx_tft003.h"
 #include "gfx/gfx_primitive.h"
@@ -248,7 +251,7 @@ void DRV_GFX_Initialize(void)
     DRV_GFX_CommandWrite(0x36); // memory access control
 //    DRV_GFX_DataWrite(0x48);    // 48 my,mx,mv,ml,BGR,mh,0.0
 
-#if (DISP_ORIENTATION == 0)
+#if defined (DISP_ORIENTATION_0)
     DRV_GFX_DataWrite(0x08);  //  my,mx,mv,ml,BGR,mh,0.0
 #else
     DRV_GFX_DataWrite(0x38);  //  my,mx,mv,ml,BGR,mh,0.0
@@ -301,7 +304,7 @@ void DRV_GFX_Initialize(void)
     DRV_GFX_CommandWrite(0x2A); // column address set
     DRV_GFX_DataWrite(0x00);    //
     DRV_GFX_DataWrite(0x00);    //
-#if (DISP_ORIENTATION == 0)
+#if defined (DISP_ORIENTATION_0)
     DRV_GFX_DataWrite(0x00);
     DRV_GFX_DataWrite(0xEF);    // X Max  = 240
 #else
@@ -313,7 +316,7 @@ void DRV_GFX_Initialize(void)
     DRV_GFX_CommandWrite(0x2B); // page address set
     DRV_GFX_DataWrite(0x00);    //
     DRV_GFX_DataWrite(0x00);    //
-#if (DISP_ORIENTATION == 0)
+#if defined (DISP_ORIENTATION_0)
     DRV_GFX_DataWrite(0x01);
     DRV_GFX_DataWrite(0x3F);    // Y Max = 320
 #else
@@ -428,7 +431,7 @@ GFX_COLOR GFX_PixelGet(uint16_t x, uint16_t y)
                         );
 
 #else
-#error 16bit PMP is not yet supported in this driver
+#warning 16bit PMP is not yet supported in this driver
 #endif
     // Disable LCD
     DisplayDisable();
@@ -573,7 +576,7 @@ uint16_t GFX_PixelArrayGet(
         DRV_GFX_PMPSingleRead();
         DRV_GFX_PMPSingleRead();
 #else
-#error 16bit PMP is not yet supported in this driver
+#warning 16bit PMP is not yet supported in this driver
 #endif
 #endif
 

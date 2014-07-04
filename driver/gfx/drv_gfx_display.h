@@ -133,17 +133,30 @@ void DRV_GFX_Initialize(void);
 
 */
 // *****************************************************************************
-#if (DISP_ORIENTATION == 90)
-    #define GFX_MaxXGet() (DISP_VER_RESOLUTION - 1)
+/*#if (DISP_ORIENTATION == 90)
+    #define GFX_MaxXGet()  (DISP_VER_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 270)
-    #define GFX_MaxXGet() (DISP_VER_RESOLUTION - 1)
+//    #define GFX_MaxXGet() (DISP_VER_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 0)
-    #define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
+//    #define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 180)
-    #define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
+//    #define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
+#else
+  #warning "DISP_ORIENTATION not defined"
+#endif
+    #define GFX_MaxXGet()  (DISP_VER_RESOLUTION - 1)*/
+
+#if (DISP_ORIENTATION == 90)
+#define GFX_MaxXGet()  (DISP_VER_RESOLUTION - 1)
+#elif (DISP_ORIENTATION == 270)
+#define GFX_MaxXGet() (DISP_VER_RESOLUTION - 1)
+#elif (DISP_ORIENTATION == 0)
+//#define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
+#elif (DISP_ORIENTATION == 180)
+#define GFX_MaxXGet() (DISP_HOR_RESOLUTION - 1)
 #endif
 
-
+#define GFX_MaxXGet()  (DISP_VER_RESOLUTION - 1)
 // *****************************************************************************
 /*
     <GROUP driver_config_functions>
@@ -176,15 +189,17 @@ void DRV_GFX_Initialize(void);
 */
 // *****************************************************************************
 #if (DISP_ORIENTATION == 90)
-    #define GFX_MaxYGet() (DISP_HOR_RESOLUTION - 1)
+  #define GFX_MaxYGet() (DISP_HOR_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 270)
-    #define GFX_MaxYGet() (DISP_HOR_RESOLUTION - 1)
+  #define GFX_MaxYGet() (DISP_HOR_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 0)
-    #define GFX_MaxYGet() (DISP_VER_RESOLUTION - 1)
+//  #define GFX_MaxYGet() (DISP_VER_RESOLUTION - 1)
 #elif (DISP_ORIENTATION == 180)
-    #define GFX_MaxYGet() (DISP_VER_RESOLUTION - 1)
+  #define GFX_MaxYGet() (DISP_VER_RESOLUTION - 1)
+#else
+  #warning "DISP_ORIENTATION not defined"
 #endif
-
+  #define GFX_MaxYGet() (DISP_HOR_RESOLUTION - 1)
 // *****************************************************************************
 /*  
     <GROUP driver_rendering_functions>

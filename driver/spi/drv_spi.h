@@ -114,14 +114,26 @@ typedef struct
    valid i values are: 1, 2, 3
    for PIC24/32 device families
 */
-    #define DRV_SPI_STAT(i)      SPI##i##STAT
+
+/* PIC32MX family. SPI channel special registers. */
+#if defined (__PIC32MX__)
+    #define DRV_SPI_CON(i)      SPI##i##CON
+    #define DRV_SPI_CONbits(i)  SPI##i##CONbits
+    #define DRV_SPI_STAT(i)     SPI##i##STAT
+    #define DRV_SPI_BRG(i)      SPI##i##BRG
     #define DRV_SPI_STATbits(i)  SPI##i##STATbits
-    #define DRV_SPI_CON(i)       SPI##i##CON1
-    #define DRV_SPI_CONbits(i)   SPI##i##CON1bits
+    #define DRV_SPI_BUF(i)       SPI##i##BUF
+#else
+/* SPI SFR definitions. i represents the SPI
+   channel number.
+   valid i values are: 1, 2, 3
+   for PIC24/32 device families
+*/
+    #define DRV_SPI_STAT(i)      SPI##i##STAT
     #define DRV_SPI_CON2(i)      SPI##i##CON2
     #define DRV_SPI_CON2bits(i)  SPI##i##CON2bits
-    #define DRV_SPI_BUF(i)       SPI##i##BUF
     #define DRV_SPI_BUFbits(i)   SPI##i##BUFbits
+#endif
 
 /* macros that defines the SPI signal polarities */
     #define SPI_CKE_IDLE_ACT     0        // data change is on active clock to idle clock state

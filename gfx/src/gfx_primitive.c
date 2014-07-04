@@ -50,9 +50,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "system_config.h"
 #include "gfx/gfx_primitive.h"          
 #include "driver/gfx/drv_gfx_display.h"
+#include "system_config.h"
 
 /*DOM-IGNORE-BEGIN*/
 // *****************************************************************************
@@ -950,7 +950,7 @@ uint16_t __attribute__((weak)) GFX_BarAlphaDraw(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_BarDraw(
+GFX_STATUS __attribute__((weak)) GFX_BarDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 uint16_t right,
@@ -1749,7 +1749,7 @@ GFX_STATUS __attribute__((weak)) GFX_StyledLineDraw(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_PolygonDraw(
+GFX_STATUS __attribute__((weak)) GFX_PolygonDraw(
                                 uint16_t sides,
                                 uint16_t *pPoints)
 {
@@ -2475,7 +2475,7 @@ inline void GFX_Primitive_Initialize(void)
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_BevelDraw(   uint16_t x1, uint16_t y1,
+GFX_STATUS __attribute__((weak)) GFX_BevelDraw(   uint16_t x1, uint16_t y1,
                                                 uint16_t x2, uint16_t y2,
                                                 uint16_t rad)
 {

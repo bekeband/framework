@@ -127,6 +127,10 @@ void TouchInit(NVM_WRITE_FUNC pWriteFunc, NVM_READ_FUNC pReadFunc, NVM_SECTORERA
     TouchHardwareInit(initValues);
     __delay_ms(2);
 
+#if defined (SIMULATE)
+    return
+#endif
+
     // assign the addresses of the callback functions
     // if these are NULL, the TouchLoadCalibration()
     // and TouchStoreCalibration() will skip the actual

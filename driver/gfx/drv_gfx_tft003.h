@@ -78,10 +78,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 /*********************************************************************
 * Overview: Display orientation.
 *********************************************************************/
-    #if (DISP_ORIENTATION != 0) && (DISP_ORIENTATION != 90)
+#if (DISP_ORIENTATION != 0) && (DISP_ORIENTATION != 90)
         #error "This driver doesn't support this orientation."
-    #endif
-
+#endif
 /*********************************************************************
 * Overview: Color depth.
 *********************************************************************/

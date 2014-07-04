@@ -80,10 +80,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
         None.
 
 */
-#if (GFX_CONFIG_FONT_CHAR_SIZE == 16)
+#if defined (GFX_CONFIG_FONT_CHAR_SIZE_16)
     #define GFX_XCHAR   uint16_t
     #define GFX_UXCHAR  uint16_t
-#elif (GFX_CONFIG_FONT_CHAR_SIZE == 8)
+#elif defined (GFX_CONFIG_FONT_CHAR_SIZE_8)
     #define GFX_XCHAR   char
     #define GFX_UXCHAR  uint8_t
 #else

@@ -142,7 +142,8 @@ GFX_GOL_LISTBOX *GFX_GOL_ListBoxCreate(
                 break;
             }
 
-            while((uint16_t) *pointer++ > (uint16_t)31);
+            while((GFX_XCHAR) *pointer++ > (GFX_XCHAR)31);
+//            while((uint16_t) *pointer++ > (uint16_t)31);
 
             if(*(pointer - 1) == 0)
                 break;

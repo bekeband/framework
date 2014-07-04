@@ -296,28 +296,44 @@ void DRV_SPI_Initialize(DRV_SPI_INIT_DATA *pData)
 void DRV_SPI_Deinitialize (uint8_t channel)
 {
 #ifdef DRV_SPI_CONFIG_CHANNEL_1_ENABLE
-    if (channel == 1)
-    {
-        DRV_SPI_STATbits(1).SPIEN = 0;
-    }
+  if (channel == 1)
+  {
+    #if defined (__PIC32MX)
+      DRV_SPI_CONbits(1).ON = 0;
+    #else
+      DRV_SPI_STATbits(1).SPIEN = 0;
+    #endif
+  }
 #endif // #ifdef DRV_SPI_CONFIG_CHANNEL_1_ENABLE
 #ifdef DRV_SPI_CONFIG_CHANNEL_2_ENABLE
-    if (channel == 2)
-    {
-        DRV_SPI_STATbits(2).SPIEN = 0;
-    }
+  if (channel == 2)
+  {
+    #if defined (__PIC32MX)
+      DRV_SPI_CONbits(2).ON = 0;
+    #else
+      DRV_SPI_STATbits(2).SPIEN = 0;
+    #endif
+  }
 #endif // #ifdef DRV_SPI_CONFIG_CHANNEL_2_ENABLE
 #ifdef DRV_SPI_CONFIG_CHANNEL_3_ENABLE
-    if (channel == 3)
-    {
-        DRV_SPI_STATbits(3).SPIEN = 0;
-    }
+  if (channel == 3)
+  {
+    #if defined (__PIC32MX)
+      DRV_SPI_CONbits(3).ON = 0;
+    #else
+      DRV_SPI_STATbits(3).SPIEN = 0;
+    #endif
+  }
 #endif // #ifdef DRV_SPI_CONFIG_CHANNEL_3_ENABLE
 #ifdef DRV_SPI_CONFIG_CHANNEL_4_ENABLE
-    if (channel == 4)
-    {
-        DRV_SPI_STATbits(4).SPIEN = 0;
-    }
+  if (channel == 4)
+  {
+    #if defined (__PIC32MX)
+      DRV_SPI_CONbits(4).ON = 0;
+    #else
+      DRV_SPI_STATbits(4).SPIEN = 0;
+    #endif
+  }
 #endif // #ifdef DRV_SPI_CONFIG_CHANNEL_4_ENABLE
 }
 
@@ -360,7 +376,11 @@ void DRV_SPI_Deinitialize (uint8_t channel)
     #ifdef DRV_SPI_CONFIG_CHANNEL_2_ENABLE
     static inline __attribute__((__always_inline__)) void DRV_SPI_WaitForDataByte2 (void)
     {
+#if defined (SIMULATE)
+      
+#else
         while (!DRV_SPI_STATbits(2).SPIRBF);
+#endif
     }
     #endif
 
@@ -408,7 +428,10 @@ void DRV_SPI_Put(uint8_t channel, uint8_t data)
     {
     #ifdef __PIC32MX
         // Wait for free buffer
+#if defined (SIMULATE)
+#else
         while(!DRV_SPI_STATbits(2).SPITBE);
+#endif
     #else
         // Wait for free buffer
         while(DRV_SPI_STATbits(2).SPITBF);

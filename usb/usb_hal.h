@@ -48,7 +48,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
             #include <usb/usb_hal_pic24f.h>
 	#endif
 #elif defined(__PIC32MX__)
-    #include "usb/usb_hal_pic32.h"
+    #include "../usb/usb_hal_pic32.h"
 #else
     #error "Silicon Platform not defined"
 #endif
